@@ -1,4 +1,36 @@
-<h1>Cocktail</h1>
-<l1><%= @cocktail.name %></l1>
+<div class="container">
 
-<%= button_to 'cocktails', root_path, method: :get, class: 'btn btn-info btn-xs' %>
+<h1>How to make a great <u><em><%="#{@cocktail.name}"%></em></u>   </h1>
+<hr>
+
+    <% @cocktail.doses.each do |dose| %>
+      <div class="class row">
+
+        <div class="col-xs-4 col-sm-4">
+        <%= dose.description %>
+        </div>
+
+
+        <div class="col-xs-4 col-sm-4">
+        <%= dose.ingredient.name %>
+        </div>
+
+        <div class="col-xs-4 col-sm-4">
+        <%= button_to 'Delete Dose', dose_path(dose), method: :delete, class: 'btn btn-primary' %>
+        </div>
+
+      </div>
+    <% end %>
+
+  <div class="class row">
+
+<hr>
+
+    <div class="col-xs-6 col-sm-3">
+      <%= button_to 'Cocktails index', root_path, method: :get, class: 'btn btn-primary' %>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <%= button_to 'Cocktails index', new_ingredients_path, method: :get, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
